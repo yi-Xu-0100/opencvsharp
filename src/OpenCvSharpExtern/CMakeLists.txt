@@ -36,13 +36,13 @@ if(OpenCV_FOUND)
 
 	if(EMSCRIPTEN)
 		# TODO: replace path
-		add_library(OpenCvSharpExtern STATIC ${OPENCVSHARP_FILES} ${WASM_LIB})
+		add_library(OpenCvSharpExternFork STATIC ${OPENCVSHARP_FILES} ${WASM_LIB})
 	else()
-		add_library(OpenCvSharpExtern SHARED ${OPENCVSHARP_FILES})
-		target_link_libraries(OpenCvSharpExtern ${OpenCV_LIBRARIES})
+		add_library(OpenCvSharpExternFork SHARED ${OPENCVSHARP_FILES})
+		target_link_libraries(OpenCvSharpExternFork ${OpenCV_LIBRARIES})
 	endif()
 
-	install(TARGETS OpenCvSharpExtern
+	install(TARGETS OpenCvSharpExternFork
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib/static

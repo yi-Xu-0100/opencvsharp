@@ -17,6 +17,34 @@ jobs:
           workflow: windows.yml
           name: packages_windows
 
+      - name: Download ubuntu artifact
+        uses: dawidd6/action-download-artifact@v8
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: ubuntu22.yml
+          name: artifacts_ubuntu_22
+
+      - name: Download ubuntu arm artifact
+        uses: dawidd6/action-download-artifact@v8
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: linux-arm.yml
+          name: artifacts_linux_arm
+
+      #- name: Download macos artifact
+      #  uses: dawidd6/action-download-artifact@v6
+      #  with:
+      #    github_token: ${{secrets.GITHUB_TOKEN}}
+      #    workflow: macos10.yml
+      #    name: artifacts_macos_10
+
+      - name: Download wasm artifact
+        uses: dawidd6/action-download-artifact@v8
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: wasm.yml
+          name: artifacts_wasm
+
       - run: |
           ls -l
 
@@ -33,5 +61,5 @@ jobs:
 
       - name: Push to nuget.org
         run: |
-          dotnet nuget push "*OpenCvSharp4Fork*.nupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push "*OpenCvSharp4Fork*.snupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "OpenCvSharp4Fork*.nupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "OpenCvSharp4Fork*.snupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate

@@ -4,7 +4,7 @@
         <id>OpenCvSharp4Fork</id>
         <version>4.6.0.20220607</version>
         <title>OpenCvSharp core library. A package of separate native bindings for your OS is required.</title>
-        <authors>yi_Xu;shimat</authors>
+        <authors>yi_Xu,shimat</authors>
         <license type="expression">Apache-2.0</license>
         <projectUrl>https://github.com/yi-Xu-0100/opencvsharp</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/yi-Xu-0100/opencvsharp/master/nuget/icon/opencvsharp.png</iconUrl>

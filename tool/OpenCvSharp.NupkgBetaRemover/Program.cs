@@ -18,7 +18,7 @@ class Program
         {
             if (!nupkgFile.Contains("-beta"))
                 continue;
-            var fileNameMatch = Regex.Match(nupkgFile, @"OpenCvSharp4\..*(?<date>\d{8})(?<beta_version>-beta\d*)\.s?nupkg");
+            var fileNameMatch = Regex.Match(nupkgFile, @"OpenCvSharp4Fork\..*(?<date>\d{8})(?<beta_version>-beta\d*)\.s?nupkg");
             if (!fileNameMatch.Success)
                 throw new Exception($"Unexpected .nupkg/.snupkg file name ({nupkgFile})");
             var dateString = fileNameMatch.Groups["date"].Value;

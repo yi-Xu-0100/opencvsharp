@@ -136,7 +136,7 @@ jobs:
           cd ${GITHUB_WORKSPACE}
           ls
       
-      - name: Build OpenCvSharpExtern
+      - name: Build OpenCvSharpExternFork
         run: |
           ls ${GITHUB_WORKSPACE}/opencv_wasm
           echo "-----"
@@ -144,9 +144,9 @@ jobs:
           emcmake cmake -DCMAKE_BUILD_TYPE=Release -DOpenCV_DIR=${GITHUB_WORKSPACE}/opencv_wasm/lib/cmake/opencv4 -DWASM_LIB=${GITHUB_WORKSPACE}/opencv_wasm/libopencv.o ..
           make -j
           ls OpenCvSharpExtern
-          cp OpenCvSharpExtern/libOpenCvSharpExtern.a ${GITHUB_WORKSPACE}/nuget/
+          cp OpenCvSharpExtern/libOpenCvSharpExternFork.a ${GITHUB_WORKSPACE}/nuget/
 
-      - name: Check OpenCvSharpExtern
+      - name: Check OpenCvSharpExternFork
         run: |
           echo TODO
 

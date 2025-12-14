@@ -167,8 +167,8 @@ public static class Packer
                     var dstDirectory = Path.Combine("NativeLib", p.Key, arch);
 
                     zipArchive.CreateEntryFromFile(
-                        Path.Combine(externDir, $"OpenCvSharpExtern.{ext}"),
-                        Path.Combine(dstDirectory, $"OpenCvSharpExtern.{ext}"));
+                        Path.Combine(externDir, $"OpenCvSharpExternFork.{ext}"),
+                        Path.Combine(dstDirectory, $"OpenCvSharpExternFork.{ext}"));
                 }
 
                 // UWPはopencv_world.dll等も入れる

@@ -25,6 +25,6 @@
         </frameworkAssemblies>
     </metadata>
     <files>
-        <file src="libOpenCvSharpExtern.so" target="runtimes/linux-x64/native" />
+        <file src="libOpenCvSharpExternFork.so" target="runtimes/linux-x64/native" />
     </files>
 </package>

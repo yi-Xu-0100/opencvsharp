@@ -20,7 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8E7279F8-F801-4672-B42F-1ED2C68B16A4}</ProjectGuid>
-    <RootNamespace>OpenCvSharpExternFork</RootNamespace>
+    <RootNamespace>OpenCvSharpExtern</RootNamespace>
+    <AssemblyName>OpenCvSharpExternFork</AssemblyName>
     <Keyword>Win32Proj</Keyword>
     <VcpkgTriplet Condition="'$(Platform)'=='Win32'">x86-windows-static</VcpkgTriplet>
     <VcpkgTriplet Condition="'$(Platform)'=='x64'">x64-windows-static</VcpkgTriplet>

@@ -101,9 +101,9 @@ RUN mkdir /opencvsharp/make && cd /opencvsharp/make && \
     make -j && make install && \
     rm -rf /opencv && \
     rm -rf /opencv_contrib && \
-    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExtern.so /usr/lib/
+    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExternFork.so /usr/lib/
 
-# Test OpenCvSharpExtern
+# Test OpenCvSharpExternFork
 RUN echo "\n\
 #include <stdio.h> \n\
 int core_Mat_sizeof(); \n\
@@ -112,7 +112,7 @@ int main(){ \n\
   printf(\"sizeof(Mat) = %d\", i); \n\
   return 0; \n\
 }" > /test.c && \
-    gcc -I./ -L./ test.c -o test -lOpenCvSharpExtern && \
+    gcc -I./ -L./ test.c -o test -lOpenCvSharpExternFork && \
     LD_LIBRARY_PATH=. ./test && \
     rm -f /test*
 

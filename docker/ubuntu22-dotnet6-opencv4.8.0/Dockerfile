@@ -96,16 +96,16 @@ RUN mkdir /opencvsharp/make && cd /opencvsharp/make && \
     make -j$(nproc) && make install && \
     rm -rf /opencv && \
     rm -rf /opencv_contrib && \
-    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExtern.so /usr/lib/ && \
+    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExternFork.so /usr/lib/ && \
     mkdir /artifacts && \
-    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExtern.so /artifacts/
+    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExternFork.so /artifacts/
 
 
 ########## Test native .so file ##########
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-jammy
 RUN apt-get update && apt-get -y install --no-install-recommends gcc
-# /usr/lib/libOpenCvSharpExtern.so
+# /usr/lib/libOpenCvSharpExternFork.so
 # /usr/local/lib/libopencv_*.a
 COPY --from=builder /usr/lib /usr/lib
 #COPY --from=builder /usr/local/lib /usr/local/lib
@@ -118,7 +118,7 @@ int main(){ \n\
   printf(\"sizeof(Mat) = %d\", i); \n\
   return 0; \n\
 }" > /test.c && \
-    gcc -I./ -L./ test.c -o test -lOpenCvSharpExtern && \
+    gcc -I./ -L./ test.c -o test -lOpenCvSharpExternFork && \
     LD_LIBRARY_PATH=. ./test
 
 
@@ -151,7 +151,7 @@ RUN dotnet test /opencvsharp/test/OpenCvSharp.Tests/OpenCvSharp.Tests.csproj -c 
 #    dotnet run && \
 #    rm -rf /ConsoleApp01
 
-#RUN ldd /artifacts/libOpenCvSharpExtern.so
+#RUN ldd /artifacts/libOpenCvSharpExternFork.so
 
 
 

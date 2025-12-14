@@ -72,7 +72,7 @@ RUN mkdir /opencvsharp/make && cd /opencvsharp/make && \
     make -j && make install && \
     rm -rf /opencv && \
     rm -rf /opencv_contrib && \
-    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExtern.so /usr/lib64/
+    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExternFork.so /usr/lib64/
 #RUN ldd /artifacts/libOpenCvSharpExtern.so
 
 # Test OpenCvSharpExtern

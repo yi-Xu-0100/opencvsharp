@@ -122,21 +122,21 @@ jobs:
           cd ${GITHUB_WORKSPACE}
           ls
       
-      - name: Build OpenCvSharpExtern
+      - name: Build OpenCvSharpExternFork
         run: |
           mkdir opencvsharp/src/build && cd $_
           cmake -D CMAKE_PREFIX_PATH=${GITHUB_WORKSPACE}/opencv_artifacts ..
           make -j
           ls OpenCvSharpExtern
-          cp OpenCvSharpExtern/libOpenCvSharpExtern.so ${GITHUB_WORKSPACE}/opencvsharp/nuget/
+          cp OpenCvSharpExtern/libOpenCvSharpExternFork.so ${GITHUB_WORKSPACE}/opencvsharp/nuget/
 
-      - name: Check OpenCvSharpExtern
+      - name: Check OpenCvSharpExternFork
         run: |
           cd ${GITHUB_WORKSPACE}/opencvsharp/nuget/
-          ldd libOpenCvSharpExtern.so
-          nm libOpenCvSharpExtern.so
+          ldd libOpenCvSharpExternFork.so
+          nm libOpenCvSharpExternFork.so
           echo -ne "#include <stdio.h> \n int core_Mat_sizeof(); int main(){ int i = core_Mat_sizeof(); printf(\"sizeof(Mat) = %d\", i); return 0; }" > test.c
-          gcc -I./ -L./ test.c -o test -lOpenCvSharpExtern
+          gcc -I./ -L./ test.c -o test -lOpenCvSharpExternFork
           LD_LIBRARY_PATH=. ./test
 
       - name: Install .NET
@@ -167,7 +167,7 @@ jobs:
         run: |
           cd ${GITHUB_WORKSPACE}/opencvsharp/test/OpenCvSharp.Tests
           dotnet build -c Release -f net8.0
-          cp ${GITHUB_WORKSPACE}/opencvsharp/nuget/libOpenCvSharpExtern.so ${GITHUB_WORKSPACE}/opencvsharp/test/OpenCvSharp.Tests/bin/Release/net8.0/
-          cp ${GITHUB_WORKSPACE}/opencvsharp/nuget/libOpenCvSharpExtern.so ${GITHUB_WORKSPACE}/opencvsharp/test/OpenCvSharp.Tests/
-          sudo cp ${GITHUB_WORKSPACE}/opencvsharp/nuget/libOpenCvSharpExtern.so /usr/lib/
+          cp ${GITHUB_WORKSPACE}/opencvsharp/nuget/libOpenCvSharpExternFork.so ${GITHUB_WORKSPACE}/opencvsharp/test/OpenCvSharp.Tests/bin/Release/net8.0/
+          cp ${GITHUB_WORKSPACE}/opencvsharp/nuget/libOpenCvSharpExternFork.so ${GITHUB_WORKSPACE}/opencvsharp/test/OpenCvSharp.Tests/
+          sudo cp ${GITHUB_WORKSPACE}/opencvsharp/nuget/libOpenCvSharpExternFork.so /usr/lib/
           LD_LIBRARY_PATH=. dotnet test OpenCvSharp.Tests.csproj -c Release -f net8.0 --runtime linux-x64 --logger "trx;LogFileName=test-results.trx" < /dev/null

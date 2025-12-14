@@ -61,5 +61,5 @@ jobs:
 
       - name: Push to nuget.org
         run: |
-          dotnet nuget push "*.nupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push "*.snupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "OpenCvSharp4Fork*.nupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "OpenCvSharp4Fork*.snupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate

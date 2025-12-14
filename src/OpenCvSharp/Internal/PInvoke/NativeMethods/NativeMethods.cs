@@ -25,7 +25,7 @@ namespace OpenCvSharp.Internal;
 #endif
 public static partial class NativeMethods
 {
-    public const string DllExtern = "OpenCvSharpExtern";
+    public const string DllExtern = "OpenCvSharpExternFork";
 
     //public const string DllFfmpegX86 = "opencv_videoio_ffmpeg430";
     //public const string DllFfmpegX64 = "opencv_videoio_ffmpeg430_64";

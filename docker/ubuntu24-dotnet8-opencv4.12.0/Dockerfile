@@ -117,9 +117,9 @@ RUN --mount=type=cache,target=/root/.ccache \
     cmake --build /opencvsharp/make --parallel "$(nproc)"; \
     cmake --install /opencvsharp/make; \
     rm -rf /opencv /opencv_contrib; \
-    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExtern.so /usr/lib/; \
+    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExternFork.so /usr/lib/; \
     mkdir -p /artifacts; \
-    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExtern.so /artifacts/
+    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExternFork.so /artifacts/
 
 
 ########## Test native .so file ##########
@@ -135,7 +135,7 @@ int main(){ \n\
   printf(\"sizeof(Mat) = %d\", i); \n\
   return 0; \n\
 }" > /test.c && \
-    gcc -I./ -L./ test.c -o test -lOpenCvSharpExtern && \
+    gcc -I./ -L./ test.c -o test -lOpenCvSharpExternFork && \
     LD_LIBRARY_PATH=. ./test
 
 

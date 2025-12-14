@@ -69,8 +69,8 @@ RUN mkdir /opencvsharp/make && cd /opencvsharp/make && \
     rm -rf /opencv && \
     rm -rf /opencv_contrib && \
     mkdir /artifacts && \
-    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExtern.so /artifacts/ && \
-    cp /artifacts/libOpenCvSharpExtern.so /usr/lib64/
+    cp /opencvsharp/make/OpenCvSharpExtern/libOpenCvSharpExternFork.so /artifacts/ && \
+    cp /artifacts/libOpenCvSharpExternFork.so /usr/lib64/
 #RUN ldd /artifacts/libOpenCvSharpExtern.so
 
 # Test OpenCvSharpExtern
@@ -81,7 +81,7 @@ int main(){ \n\
   printf(\"sizeof(Mat) = %d\", i); \n\
   return 0; \n\
 }" > /test.c && \
-    gcc -I./ -L. test.c -o test -lOpenCvSharpExtern && \
+    gcc -I./ -L. test.c -o test -lOpenCvSharpExternFork && \
     ./test && \
     rm -f /test*
 

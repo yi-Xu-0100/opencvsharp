@@ -47,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="OpenCvSharpExtern.dll">
+    <None Update="OpenCvSharpExternFork.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
